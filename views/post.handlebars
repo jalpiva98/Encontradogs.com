@@ -1,0 +1,28 @@
+<main class="container mt-5">
+  <article>
+    <h1 class="text-dark">{{title}}</h1>
+    <p>By {{User.username}} on {{format_date createdAt}}</p>
+    <p class="text-dark">{{content}}</p>
+  </article>
+  {{#if logged_in}}
+    <form class="new-hearthstone-comment-form mb-3">
+      <div class="mb-3">
+        <label for="comment" class="form-label text-dark">Agrega un comentario</label>
+        <textarea
+          class="form-control"
+          id="content-new-hearthstone-comment"
+          rows="3"
+          placeholder="Add a comment"
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-warning">Enviar</button>
+    </form>
+  {{/if}}
+  <h2>Comments</h2>
+  {{#each Comments}}
+    <div class="comment mb-3">
+      <p class="text-dark">{{comment_text}}</p>
+      <p>By {{User.username}} on {{format_date createdAt}}</p>
+    </div>
+  {{/each}}
+</main>

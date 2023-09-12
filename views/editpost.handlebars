@@ -1,0 +1,26 @@
+<main class="container mt-5">
+  <h1 class="mb-4 text-dark">Edita tus publicaciones</h1>
+  <form class="update-hearthstone-post-form" class="mb-3">
+    <div class="mb-3">
+      <label for="title-update-hearthstone-post" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title-update-hearthstone-post"
+        placeholder="Enter post title"
+        value="{{title}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="content-update-hearthstone-post" class="form-label">Content</label>
+      <textarea
+        class="form-control"
+        id="content-update-hearthstone-post"
+        rows="3"
+        placeholder="Enter post content"
+      >{{content}}</textarea>
+    </div>
+    <button type="button" data-action="update" id="update-hearthstone-post" class="btn btn-light action-hearthstone-post">Update Hearthstone Post</button>
+    <button type="button" id="delete-hearthstone-post" class="btn btn-danger delete-post" data-post-id="{{id}}">Delete Hearthstone Post</button>
+  </form>
+</main>
