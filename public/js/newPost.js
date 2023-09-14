@@ -1,5 +1,7 @@
 //this is for new posts on the website
 
+
+
 const newPetPostFormHandler = async (event) => {
   event.preventDefault();
 
@@ -11,9 +13,29 @@ const newPetPostFormHandler = async (event) => {
   const breed = document.querySelector('#breed-new-pet-post').value.trim();
   const location = document.querySelector('#location-new-pet-post').value.trim();
   const time = document.querySelector('#time-new-pet-post').value.trim();
+  
+  // get the selected image file
+  const imageFile = document.querySelector('#image-new-pet-post').value.trim(); 
 
   if (title && content && category && size && color && breed && location && time) {
     try {
+      /// handle image upload to cloudinary
+      const formData = new FormData();
+      formData.append('file', imageFile);
+
+      const imageResponse = await fetch('api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!imageResponse.ok) {
+        throw new Error('Failed to upload image. Please try again.');
+      }
+
+      const imageData = await imageResponse.json();
+      const imageUrl = imageData.secure_url; // Exctract the url of the uploaded image
+
+      // create the post with the image url
       const response = await fetch('/api/posts', {
         method: 'POST',
         body: JSON.stringify({ 
@@ -24,7 +46,8 @@ const newPetPostFormHandler = async (event) => {
           color,
           breed,
           location,
-          time
+          time,
+          imageUrl, // includes the image url in the post data
         }),
         headers: { 'Content-Type': 'application/json' },
       });
