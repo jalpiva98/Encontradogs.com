@@ -1,7 +1,5 @@
 //this is for new posts on the website
 
-
-
 const newPetPostFormHandler = async (event) => {
   event.preventDefault();
 
@@ -15,7 +13,7 @@ const newPetPostFormHandler = async (event) => {
   const time = document.querySelector('#time-new-pet-post').value.trim();
   
   // get the selected image file
-  const imageFile = document.querySelector('#image-new-pet-post').value.trim(); 
+  const imageFile = document.querySelector('#image-new-pet-post').files[0]; 
 
   if (title && content && category && size && color && breed && location && time) {
     try {
@@ -23,17 +21,20 @@ const newPetPostFormHandler = async (event) => {
       const formData = new FormData();
       formData.append('file', imageFile);
 
-      const imageResponse = await fetch('api/upload', {
+      const imageResponse = await fetch('/api/posts/upload', {
         method: 'POST',
         body: formData,
       });
 
       if (!imageResponse.ok) {
-        throw new Error('Failed to upload image. Please try again.');
+        throw new Error('Failed to upload image. Please try againn.');
       }
 
       const imageData = await imageResponse.json();
       const imageUrl = imageData.secure_url; // Exctract the url of the uploaded image
+
+      // Update the hidden input field with the image URL
+      document.querySelector('#image-url').value = imageUrl;
 
       // create the post with the image url
       const response = await fetch('/api/posts', {

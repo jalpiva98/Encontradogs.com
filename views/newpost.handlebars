@@ -1,5 +1,5 @@
 <main class="container mt-5">
-  <form class="new-pet-post-form mb-3">
+  <form class="new-pet-post-form mb-3" enctype="multipart/form-data">
     <div class="mb-3">
       <label for="title-new-pet-post" class="form-label text-dark">Title</label>
       <input type="text" class="form-control" id="title-new-pet-post" placeholder="Enter the title">
@@ -42,7 +42,7 @@
     </div>
     <div class="mb-3">
       <label for="image-new-pet-post" class="form-label text-dark">Upload Image</label>
-      <input type="file" class="form-control" id="image-new-pet-post" accept="image/*">
+      <input type="file" class="form-control" id="image-new-pet-post" name="file" accept="image/*">
       <!-- Hidden input field to store the uploaded image URL -->
       <input type="hidden" id="image-url" name="image-url">
     </div>
