@@ -1,32 +1,47 @@
-//edits a post on the webpage
-
+// Edits a post on the webpage
 const postId = window.location.pathname.split('/').pop();
 
-// this a function to handle updates and deletions
+// This is a function to handle updates and deletions
 const handlePostAction = async (actionType) => {
   try {
     const url = `/api/posts/${postId}`;
     const method = actionType === 'update' ? 'PUT' : 'DELETE';
 
     if (actionType === 'update') {
-      console.log('ppppppp');
       const title = document.querySelector('#title-update-hearthstone-post').value.trim();
       const content = document.querySelector('#content-update-hearthstone-post').value.trim();
+      const category = document.querySelector('#category-update-hearthstone-post').value.trim();
+      const size = document.querySelector('#size-update-hearthstone-post').value.trim();
+      const color = document.querySelector('#color-update-hearthstone-post').value.trim();
+      const breed = document.querySelector('#breed-update-hearthstone-post').value.trim();
+      const location = document.querySelector('#location-update-hearthstone-post').value.trim();
+      const time = document.querySelector('#time-update-hearthstone-post').value.trim();
 
       if (!title || !content) {
         return; // don't perform the action if title or content is missing
       }
 
+      const bodyData = {
+        title,
+        content,
+        category,
+        size,
+        color,
+        breed,
+        location,
+        time
+      };
+
       const response = await fetch(url, {
         method,
-        body: JSON.stringify({ title, content }),
+        body: JSON.stringify(bodyData),
         headers: { 'Content-Type': 'application/json' },
       });
 
       if (response.ok) {
         document.location.replace('/dashboard');
       } else {
-        throw new Error('Failed to update a Hearthstone post.');
+        throw new Error('Failed to update the post.');
       }
     } else if (actionType === 'delete') {
       const response = await fetch(url, { method });
@@ -34,18 +49,16 @@ const handlePostAction = async (actionType) => {
       if (response.ok) {
         document.location.replace('/dashboard');
       } else {
-        throw new Error('Failed to delete a Hearthstone post.');
+        throw new Error('Failed to delete the post.');
       }
     }
   } catch (error) {
     console.error(error);
-    alert(error.message); 
+    alert(error.message);
   }
 };
 
-// event listener for both update and delete buttons
-// you have to make sure the button you need has this class 
-//made mistake of not adding it haha
+// Event listener for both update and delete buttons
 const actionButtons = document.querySelectorAll('.action-hearthstone-post');
 
 actionButtons.forEach((button) => {

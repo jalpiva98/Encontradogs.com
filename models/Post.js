@@ -1,4 +1,3 @@
-
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
@@ -23,6 +22,30 @@ Post.init(
         len: [1],
       },
     },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    size: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    color: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    breed: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    time: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -34,7 +57,7 @@ Post.init(
   {
     sequelize,
     timestamps: true,
-    modelName: "Post", 
+    modelName: "Post",
     underscored: true,
     freezeTableName: true,
   }

@@ -1,6 +1,7 @@
 <main class="container mt-5">
   <h1 class="mb-4 text-dark">Edita tus publicaciones</h1>
-  <form class="update-hearthstone-post-form" class="mb-3">
+  <form class="update-hearthstone-post-form mb-3">
+    <!-- campos que ya existen -->
     <div class="mb-3">
       <label for="title-update-hearthstone-post" class="form-label">Title</label>
       <input
@@ -20,7 +21,70 @@
         placeholder="Enter post content"
       >{{content}}</textarea>
     </div>
-    <button type="button" data-action="update" id="update-hearthstone-post" class="btn btn-light action-hearthstone-post">Update Hearthstone Post</button>
-    <button type="button" id="delete-hearthstone-post" class="btn btn-danger delete-post" data-post-id="{{id}}">Delete Hearthstone Post</button>
+
+    <!-- nuevos camposs -->
+    <div class="mb-3">
+      <label for="category-update-hearthstone-post" class="form-label">Category</label>
+      <input
+        type="text"
+        class="form-control"
+        id="category-update-hearthstone-post"
+        placeholder="Enter category"
+        value="{{category}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="size-update-hearthstone-post" class="form-label">Size</label>
+      <input
+        type="text"
+        class="form-control"
+        id="size-update-hearthstone-post"
+        placeholder="Enter size"
+        value="{{size}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="color-update-hearthstone-post" class="form-label">Color</label>
+      <input
+        type="text"
+        class="form-control"
+        id="color-update-hearthstone-post"
+        placeholder="Enter color"
+        value="{{color}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="breed-update-hearthstone-post" class="form-label">Breed</label>
+      <input
+        type="text"
+        class="form-control"
+        id="breed-update-hearthstone-post"
+        placeholder="Enter breed"
+        value="{{breed}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="location-update-hearthstone-post" class="form-label">Location</label>
+      <input
+        type="text"
+        class="form-control"
+        id="location-update-hearthstone-post"
+        placeholder="Enter location"
+        value="{{location}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="time-update-hearthstone-post" class="form-label">Time</label>
+      <input
+        type="text"
+        class="form-control"
+        id="time-update-hearthstone-post"
+        placeholder="Enter time"
+        value="{{time}}"
+      />
+    </div>
+
+    <button type="button" data-action="update" id="update-hearthstone-post" class="btn btn-info action-hearthstone-post">Edita tu publicación</button>
+    <button type="button" id="delete-hearthstone-post" class="btn btn-danger delete-post" data-post-id="{{id}}">Elimina tu publicación</button>
   </form>
 </main>
