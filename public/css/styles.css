@@ -1,3 +1,7 @@
 .post-container {
     transition: background-color 0.3s;
   }
+
+.bg-color-01 {
+  background-color: #62d5b4;
+}
