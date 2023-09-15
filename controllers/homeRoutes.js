@@ -2,25 +2,28 @@
 const router = require("express").Router();
 const { Post, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
+const cowsay = require("cowsay");
 
 // this is the route to get the homepage
 router.get("/", async (req, res) => {
   try {
-        // it also finds all the posts
     const postData = await Post.findAll({
       include: [{ model: User, attributes: ["username"] }],
     });
-    // we then convert the data to plain js object
     const posts = postData.map((post) => post.get({ plain: true }));
-    // it renders the page with the posts
+
+    const cow = cowsay.say({ text: "Hola, soy una vaca, nos da gusto verte de nuevo!" });  // Cowsay texto
+
     res.render("homepage", {
       posts,
       logged_in: req.session.logged_in,
+      cow: cow  //agrega el mensaje de vaca pa handlebars
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 // Route to render individual post page
 router.get("/post/:id", withAuth, async (req, res) => {
   try {
@@ -116,5 +119,7 @@ router.get("/editpost/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
 // module exports router
 module.exports = router;
