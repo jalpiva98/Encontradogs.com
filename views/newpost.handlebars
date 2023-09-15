@@ -1,45 +1,52 @@
 <main class="container mt-5">
-  <form class="new-hearthstone-post-form mb-3">
+  <form class="new-pet-post-form mb-3" enctype="multipart/form-data">
     <div class="mb-3">
-      <label for="title-new-hearthstone-post" class="form-label text-dark">Title</label>
-      <input type="text" class="form-control" id="title-new-hearthstone-post" placeholder="Enter the title">
+      <label for="title-new-pet-post" class="form-label text-dark">Title</label>
+      <input type="text" class="form-control" id="title-new-pet-post" placeholder="Enter the title">
     </div>
     <div class="mb-3">
-      <label for="content-new-hearthstone-post" class="form-label text-dark">Content</label>
-      <textarea class="form-control" id="content-new-hearthstone-post" rows="3" placeholder="Content of the post"></textarea>
+      <label for="content-new-pet-post" class="form-label text-dark">Content</label>
+      <textarea class="form-control" id="content-new-pet-post" rows="3" placeholder="Content of the post"></textarea>
     </div>
     <div class="mb-3">
-      <label for="category-new-hearthstone-post" class="form-label text-dark">Category</label>
-      <select id="category-new-hearthstone-post" class="form-control">
+      <label for="category-new-pet-post" class="form-label text-dark">Category</label>
+      <select id="category-new-pet-post" class="form-control">
         <option value="gato">Gato</option>
         <option value="perro">Perro</option>
         <option value="otros">Otros</option>
       </select>
     </div>
     <div class="mb-3">
-      <label for="size-new-hearthstone-post" class="form-label text-dark">Size</label>
-      <select id="size-new-hearthstone-post" class="form-control">
+      <label for="size-new-pet-post" class="form-label text-dark">Size</label>
+      <select id="size-new-pet-post" class="form-control">
         <option value="small">Small</option>
         <option value="medium">Medium</option>
         <option value="large">Large</option>
       </select>
     </div>
     <div class="mb-3">
-      <label for="color-new-hearthstone-post" class="form-label text-dark">Color</label>
-      <input type="text" class="form-control" id="color-new-hearthstone-post" placeholder="Enter the color">
+      <label for="color-new-pet-post" class="form-label text-dark">Color</label>
+      <input type="text" class="form-control" id="color-new-pet-post" placeholder="Enter the color">
     </div>
     <div class="mb-3">
-      <label for="breed-new-hearthstone-post" class="form-label text-dark">Breed</label>
-      <input type="text" class="form-control" id="breed-new-hearthstone-post" placeholder="Enter the breed">
+      <label for="breed-new-pet-post" class="form-label text-dark">Breed</label>
+      <input type="text" class="form-control" id="breed-new-pet-post" placeholder="Enter the breed">
     </div>
     <div class="mb-3">
-      <label for="location-new-hearthstone-post" class="form-label text-dark">Location</label>
-      <input type="text" class="form-control" id="location-new-hearthstone-post" placeholder="Enter the location">
+      <label for="location-new-pet-post" class="form-label text-dark">Location</label>
+      <input type="text" class="form-control" id="location-new-pet-post" placeholder="Enter the location">
     </div>
     <div class="mb-3">
-      <label for="time-new-hearthstone-post" class="form-label text-dark">Time</label>
-      <input type="text" class="form-control" id="time-new-hearthstone-post" placeholder="Enter the time">
+      <label for="time-new-pet-post" class="form-label text-dark">Time</label>
+      <input type="text" class="form-control" id="time-new-pet-post" placeholder="Enter the time">
     </div>
+    <div class="mb-3">
+      <label for="image-new-pet-post" class="form-label text-dark">Upload Image</label>
+      <input type="file" class="form-control" id="image-new-pet-post" name="file" accept="image/*">
+      <!-- Hidden input field to store the uploaded image URL -->
+      <input type="hidden" id="image-url" name="image-url">
+    </div>
+
     <button type="submit" class="btn btn-warning">Submit</button>
   </form>
 </main>

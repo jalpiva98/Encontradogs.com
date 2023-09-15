@@ -1,6 +1,9 @@
 const router = require("express").Router();
 const { Post, User, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
+const cloudinary = require("../../utils/cloudinary");
+const upload = require("../../middleware/multer");
+
 
 const handleErrorResponse = (res, err) => {
   console.error(err);
@@ -87,6 +90,25 @@ router.delete("/:id", withAuth, async (req, res) => {
       return;
     }
     res.status(200).json(deletedPost);
+  } catch (err) {
+    handleErrorResponse(res, err);
+  }
+});
+
+// Handle image upload
+router.post("/upload", upload.single("file"), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: "No file uploaded" });
+    }
+
+    // Upload the image to Cloudinary
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "Pets", // specifies cloudinary folder name
+    });
+
+    // Respond with the image URL from Cloudinary
+    res.status(200).json({ secure_url: result.secure_url });
   } catch (err) {
     handleErrorResponse(res, err);
   }
