@@ -1,4 +1,68 @@
 <main class="container mt-5">
+  {{#if logged_in}}
+    <!--si el usuario esta logeado, no mostrar las forms para alta y login -->
+    <h1 class="mb-4 text-dark">Nos da gusto verte de nuevo!</h1>
+  {{else}}
+    <div class="row">
+      <!-- izqueirda: Login Form -->
+      <div class="col-md-6">
+        <h1 class="mb-4 text-warning">Ingresa con tu usario</h1>
+        <form class="hearthstone-login-form">
+          <div class="mb-3">
+            <label for="username" class="form-label">Usuario</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username-hearthstone-login"
+              placeholder="Nombre de usuario"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password-hearthstone-login"
+              placeholder="Ingresa tu Contraseña"
+            />
+          </div>
+          <button type="submit" class="btn btn-warning">¡Ingresa!</button>
+        </form>
+      </div>
+      
+      <!-- derecha: Signup Form -->
+      <div class="col-md-6">
+        <h1 class="mb-4 text-warning">Únete a la comunidad</h1>
+        <form id="signup-form" class="hearthstone-signup-form">
+          <div class="mb-3">
+            <label for="username" class="form-label">Hearthstone Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              placeholder="Pon tu nombre de usuario"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" placeholder="Pon tu correo electrónico" />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Create a Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Utiliza una contraseña segura"
+            />
+          </div>
+          <button type="submit" class="btn btn-warning">🦊Únete🦊</button>
+        </form>
+      </div>
+    </div>
+  {{/if}}
+
+  <!-- abajo Posts Section -->
   <h1 class="mb-4 text-dark">¡Mascotas Encontradas por la Comunidad!</h1>
   <div class="row">
     {{#each posts}}
