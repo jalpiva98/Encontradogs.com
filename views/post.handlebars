@@ -2,6 +2,7 @@
   <article>
     <h1 class="text-dark">{{title}}</h1>
     <p>By {{User.username}} on {{format_date createdAt}}</p>
+    <img src={{imageUrl}} alt="pet_picture" style="width: 300px; height: 300px;">
     <p class="text-dark">{{content}}</p>
     <p>Category: {{category}}</p>
     <p>Size: {{size}}</p>
@@ -9,7 +10,6 @@
     <p>Breed: {{breed}}</p>
     <p>Location: {{location}}</p>
     <p>Time: {{time}}</p>
-    <img src={{imageUrl}} alt="pet_picture">
   </article>
   {{#if logged_in}}
     <form class="new-hearthstone-comment-form mb-3">
