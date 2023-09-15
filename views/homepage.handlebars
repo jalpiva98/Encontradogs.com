@@ -1,7 +1,18 @@
 <main class="container mt-5">
+
+
   {{#if logged_in}}
     <!--si el usuario esta logeado, no mostrar las forms para alta y login -->
-    <h1 class="mb-4 text-dark">Nos da gusto verte de nuevo!</h1>
+    <!-- <h1 class="mb-4 text-dark">Nos da gusto verte de nuevo!</h1>-->
+
+  {{#if cow}}
+    <div class="text-center text-dark my-3">
+      <pre>{{cow}}</pre>
+    </div>
+  {{/if}}
+
+
+
   {{else}}
     <div class="row">
       <!-- izqueirda: Login Form -->
