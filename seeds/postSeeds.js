@@ -11,6 +11,7 @@ const postData = [
     breed: 'Mixed',
     location: 'Insurgentes Sur',
     time: 'Morning',
+    imageUrl:'https://estaticos-cdn.prensaiberica.es/clip/823f515c-8143-4044-8f13-85ea1ef58f3a_16-9-discover-aspect-ratio_default_0.jpg'
   },
   {
     title: 'Gato en Colonia del Valle',
@@ -22,6 +23,7 @@ const postData = [
     breed: 'Persian',
     location: 'Colonia del Valle',
     time: 'Afternoon',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Stray_calico_cat_near_Sagami_River-01.jpg'
   },
   {
     title: 'Pajarito Caído en Polanco',
@@ -33,6 +35,7 @@ const postData = [
     breed: 'Sparrow',
     location: 'Polanco',
     time: 'Evening',
+    imageUrl: 'https://endanea.com/wp-content/uploads/2015/10/endanea-mascotas-pajaro-caido-nido.jpg'
   },
 ];
 
