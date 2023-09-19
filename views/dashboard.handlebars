@@ -1,19 +1,30 @@
-<main class="container mt-5">
-  <div class="row">
-    <div class="col-12">
-      <h1 class="mb-4 text-dark">Mascotas Encontradas</h1>
-      <a href="/newpost" class="btn btn-info">Agrega una mascota</a>
-    </div>
-  </div>
+<main class="container mx-auto mt-5">
   <br>
-  <h1 class="mb-4 text-dark">Revisa tus publicaciones</h1>
-  {{#each posts}}
-    <div class="post-container post mb-3">
-      <h2><a href="/post/{{id}}" class="text-decoration-none text-reset">{{title}}</a></h2>
-      <img src={{imageUrl}} alt="pet_picture" style="width: 180px; height: 180px;">
-      <p>By {{user.username}} on {{format_date createdAt}}</p>
-      <a href="/editpost/{{id}}" class="btn btn-info">Edit</a>
-      <button class="btn btn-danger delete-post" data-post-id="{{id}}">Delete</button>
-    </div>
-  {{/each}}
+  <h1 class="mb-4 text-dark text-3xl font-bold">Tus publicaciones</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    {{#each posts}}
+      <div class="post-container bg-green-800 text-white shadow-lg rounded-lg overflow-hidden p-4">
+        <h2 class="text-xl font-semibold text-center"><a href="/post/{{id}}">{{title}}</a></h2>
+        <a href="/post/{{id}}">
+          <img src={{imageUrl}} alt="pet_picture" class="w-full h-48 object-cover mx-auto mt-4 rounded">
+        </a>
+        <p class="mt-4">{{content}}</p>
+        <p class="mt-2">By {{User.username}} on {{format_date createdAt}}</p>
+        <div class="text-center mt-4">
+          <a href="/editpost/{{id}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded inline-block">
+            Edit
+          </a>
+          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded inline-block ml-2 delete-post" data-post-id="{{id}}">
+            Delete
+          </button>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  <div class="mb-3 text-center">
+    <h2 class="mb-4 text-dark text-3xl text-center">Haz tu nuevo reporte</h2>
+    <a href="/newpost" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block mx-auto">
+      Agrega una mascota
+    </a>
+  </div>
 </main>
