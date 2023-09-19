@@ -1,3 +1,5 @@
+const coordinates = "";
+const locationText = document.querySelector('#location-new-pet-post');
 const map = L.map('map').setView([20.642987904855, -100.44886813038642], 13);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -16,16 +18,24 @@ const LeafIcon = L.Icon.extend({
 });
 
 const dogIcon = new LeafIcon({iconUrl: 'https://www.pngkit.com/png/detail/950-9507730_635px-circle-dog-catches-something.png'});
+
 for (let i = 0; i < 300; i++) {
-console.log(dogIcon);
+//console.log(dogIcon);
 const mGreen = L.marker([20.59552859795402+Math.sin(i) * -i, -100.424802006007859+i], {icon: dogIcon}).bindPopup('I am a green leaf.').addTo(map);
 } 
 const popup = L.popup();
 function onMapClick(e) {
+const coordinates  = e.latlng.toString();
+locationText.value= coordinates.slice(7,25);
+console.log(locationText);  
 popup
     .setLatLng(e.latlng)
     .setContent("You clicked the map at " + e.latlng.toString())
     .openOn(map);
+
+  
 }
 
 map.on('click', onMapClick);
+
+leaflet.exports = {coordinates};

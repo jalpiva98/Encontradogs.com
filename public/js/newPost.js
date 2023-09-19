@@ -1,5 +1,6 @@
 //this is for new posts on the website
 
+
 const newPetPostFormHandler = async (event) => {
   event.preventDefault();
 
@@ -12,6 +13,7 @@ const newPetPostFormHandler = async (event) => {
   const location = document.querySelector('#location-new-pet-post').value.trim();
   const time = document.querySelector('#time-new-pet-post').value.trim();
   
+
   // get the selected image file
   const imageFile = document.querySelector('#image-new-pet-post').files[0]; 
 
