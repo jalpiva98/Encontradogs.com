@@ -4,6 +4,22 @@
   {{#if logged_in}}
     <!-- If the user is logged in, do not show the registration and login forms -->
     <h1 class="mb-4 text-white font-bold">Nos da gusto verte de nuevo!</h1>
+
+    <!-- Search Bar Section Below -->
+<section class="flex justify-center">
+  <div class="flex mb-10">
+    <input
+      id="search-input"
+      type="text"
+      placeholder="¡Busca a un animal perdido!"
+      class="w-64 px-4 py-2 border border-lime-700 rounded-l-md focus:outline-none focus:border-yellow-500"
+    />
+    <button id="search-button" type="button" class="px-4 py-2 mx-auto bg-lime-700 text-white rounded-r-md focus:border-yellow-500">
+      Buscar
+    </button>
+  </div>
+</section>
+
   {{else}}
 <section class="flex flex-wrap">
 <!-- Left: Login Form -->

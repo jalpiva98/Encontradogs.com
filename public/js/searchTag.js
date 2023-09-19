@@ -3,21 +3,24 @@ function handleSearch() {
     event.preventDefault();
     // Get the user's input
     const searchInput = document.querySelector("#search-input").value.toLowerCase();
-
-    console.log(searchInput)
   
-    // Filter the posts
-    const matchingPosts = posts.filter(post => {
-      const title = post.title.toLowerCase();
-      const content = post.content.toLowerCase();
-  
-      return title.includes(searchInput) || content.includes(searchInput);
-    });
-  
-    // Update the display to show only matching posts
-    // You'll need to adjust this part based on your template engine
-    // Here, we assume you have a function displayPosts that takes an array of posts
-    displayPosts(matchingPosts);
+    // Make an HTTP request to your server's / route with the search query
+    fetch(`/api/posts?search=${searchInput}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network error");
+        }
+        return response.json();
+      })
+      .then((matchingPosts) => {
+        // Update the display to show only matching posts
+        // You'll need to adjust this part based on your template engine
+        // Here, we assume you have a function displayPosts that takes an array of posts
+        displayPosts(matchingPosts);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
   
   // Add an event listener to the search button
