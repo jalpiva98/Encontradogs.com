@@ -1,17 +1,121 @@
 <main class="container mt-5">
-  <h1 class="mb-4 text-dark">¡Mascotas Encontradas por la Comunidad!</h1>
-  <div class="row">
+
+
+  {{#if logged_in}}
+    <!-- If the user is logged in, do not show the registration and login forms -->
+    <h1 class="mb-4 text-gray-800">Nos da gusto verte de nuevo!</h1>
+  {{else}}
+<section class="flex flex-wrap">
+<!-- Left: Login Form -->
+<section class="w-full md:w-1/2 p-4 h-3/4">
+  <h1 class="w-1/2 px-4 py-2 mb-2 bg-teal-900 text-white rounded-md shadow-[2px_9px_10px_5px_#9ae6b4]">Ingresa con tu usuario</h1>
+  <form class="hearthstone-login-form mt-10 h-[35vh] hearthstone-signup-form bg-emerald-300 text-white rounded-lg border-teal-900 border-2 flex flex-col justify-between">
+    <div>
+      <div class="mb-3 flex flex-col items-center"> <!-- Center inputs vertically and horizontally -->
+        <label for="username" class="block text-white">Usuario</label>
+        <input
+          type="text"
+          class="w-5/6 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-yellow-500"
+          id="username-hearthstone-login"
+          placeholder="Nombre de usuario"
+        />
+      </div>
+      <div class="mb-3 flex flex-col items-center"> <!-- Center inputs vertically and horizontally -->
+        <label for="password" class="block text-white">Contraseña</label>
+        <input
+          type="password"
+          class="w-5/6 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-yellow-500"
+          id="password-hearthstone-login"
+          placeholder="Ingresa tu Contraseña"
+        />
+      </div>
+    </div>
+
+    <div class="flex justify-center ">
+      <button type="submit" class="w-5/6 px-4 py-2 mb-4 bg-teal-900 text-white border-white border-2 rounded-md hover:bg-yellow-600">¡Ingresa!</button>
+    </div>
+  </form>
+</section>
+
+      <!-- Right: Signup Form -->
+<section class="w-full md:w-1/2 p-4 h-3/4">
+  <h1 class="w-1/2 px-4 py-2 mb-2 bg-teal-900 text-white rounded-md shadow-[2px_9px_10px_5px_#9ae6b4]">Únete a la comunidad</h1>
+  <form id="signup-form" class="h-[35vh] mt-10 hearthstone-signup-form bg-emerald-300 text-white rounded-lg border-teal-900 border-2 flex flex-col justify-between"> <!-- Add flex and justify-between here -->
+    <div>
+      <div class="mb-3 flex flex-col items-center"> <!-- Center inputs vertically and horizontally -->
+        <label for="username" class="block text-white">Nombre de Usuario</label>
+        <input
+          type="text"
+          class="w-5/6 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-yellow-500"
+          id="username"
+          placeholder="Pon tu nombre de usuario"
+        />
+      </div>
+      <div class="mb-3 flex flex-col items-center"> <!-- Center inputs vertically and horizontally -->
+        <label for="email" class="block text-white">Correo electrónico</label>
+        <input
+          type="email"
+          class="w-5/6 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-yellow-500"
+          id="email"
+          placeholder="Pon tu correo electrónico"
+        />
+      </div>
+      <div class="mb-3 flex flex-col items-center"> <!-- Center inputs vertically and horizontally -->
+        <label for="password" class="block text-white">Crea una contraseña</label>
+        <input
+          type="password"
+          class="w-5/6 px-3 py-2 rounded-md focus:outline-none focus:border-yellow-500"
+          id="password"
+          placeholder="Utiliza una contraseña segura"
+        />
+      </div>
+    </div>
+    <div class="flex justify-center mb-4"> <!-- Add margin-bottom here -->
+      <button type="submit" class="w-5/6 px-4 py-2 bg-teal-900 text-white border-white border-2 rounded-md hover:bg-yellow-600">🦊Únete🦊</button>
+    </div>
+  </form>
+</section>
+
+</section>
+
+  <div class="flex items-center mb-0"> <!-- Create blank space -->
+            <div class="w-full h-12 bg-transparent"></div>
+  </div>
+<!-- Search Bar Section Below -->
+<section class="flex justify-center">
+  <div class="flex mb-10">
+    <input
+      type="text"
+      placeholder="¡Busca a un animal perdido!"
+      class="w-64 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:border-yellow-500"
+    />
+    <button type="button" class="px-4 py-2 mx-auto bg-teal-900 text-white rounded-r-md focus:border-yellow-500">
+      Buscar
+    </button>
+  </div>
+</section>
+
+
+  {{/if}}
+  <div class="flex items-center mb-0"> <!-- Create blank space -->
+            <div class="w-full h-13 bg-transparent"></div>
+  </div>
+<!-- Posts Section Below -->
+<section class="text-center mx-auto mb-20">
+  <h1 class="block mx-auto mb-4 h-10 bg-teal-900 rounded-md text-white py-2">¡Mascotas Encontradas por la Comunidad!</h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     {{#each posts}}
-      <div class="col-md-4">
-        <div class="card mb-3">
-          <div class="card-header bg-success">
-            <h2 class="card-title">
-              <a href="/post/{{id}}" class="text-dark">{{title}}</a>
-            </h2>
-          </div>
-          <div class="card-body text-dark">
-            <p>By {{User.username}} on {{format_date createdAt}}</p>
-          </div>
+      <div class="w-full p-4 shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)]">
+        {{#if image_url}}
+          <img src="{{image_url}}" alt="Imagen de animal encontrado" class="petCard-img">
+        {{else}}
+          <img src="/Assets/img/DogPlaceholder.svg" alt="Imagen de animal encontrado" class="petCard-img">
+        {{/if}}
+        <div class="bg-color-02 shadow-md rounded-md p-4">
+          <h2 class="text-lg font-semibold mb-2">
+            <a href="/post/{{id}}" class="text-gray-900">{{title}}</a>
+          </h2>
+          <p class="text-gray-600">By {{User.username}} on {{format_date createdAt}}</p>
         </div>
       </div>
     {{/each}}
@@ -19,4 +123,28 @@
 
   {{map}}
   </div>
+</section>
+
+<!-- MAP Section Below -->
+<section class="relative min-h-[25vh] py-16 bg-teal-900  mb-20 ">
+    <div class="w-full text-center">
+      <p class="text-white text-2xl font-bold">This is the map placeholder</p>
+      <!-- Add content or components here -->
+    </div>
+      <!-- Search Bar Section Below -->
+<div class="absolute bottom-0 left-0 ml-10">
+  <div class="flex mb-10">
+    <input
+      type="text"
+      placeholder="¡Busca una ubicación!"
+      class="w-64 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:border-yellow-500"
+    />
+    <button type="button" class="px-4 py-2 mx-auto bg-emerald-300 text-white rounded-r-md focus:border-yellow-500">
+      Buscar
+    </button>
+  </div>
+</div>
+    
+</section>
+
 </main>
