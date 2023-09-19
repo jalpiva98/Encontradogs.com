@@ -1,53 +1,45 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Encontradogs</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/dashboard.css" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
 </head>
-<body class="bg-light text-primary">
+<body class="text-primary">
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-success">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">Encontradogs</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Home🐕🏠</a>
-            </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/dashboard">Tus Publicaciones🦝</a>
-              </li>
+    <nav class="bg-emerald-300">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between py-4">
+          <a class="text-white text-2xl font-bold" href="/">Encontradogs</a>
+          <button
+            class="lg:hidden text-white text-xl"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="hidden lg:flex space-x-4">
+            <a class="text-white bg-lime-700 border-teal-900 border-2 rounded-lg px-2 py-1 hover:bg-lime-700" href="/">Home🐕🏠</a>
+            <a class="text-white bg-lime-700 border-teal-900 border-2 rounded-lg px-2 py-1 hover:bg-lime-700" href="/dashboard">Tus Publicaciones🦝</a>
             {{#if logged_in}}
-              <li class="nav-item">
-                <a class="nav-link" href="#" id="hearthstone-logout">Salir🐰</a>
-              </li>
+              <a class="text-white" href="#" id="hearthstone-logout">Salir🐰</a>
             {{else}}
-              <li class="nav-item">
-                <a class="nav-link" href="/login">Entra a tu cuenta🐱</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/signup">Date de alta🐶</a>
-              </li>
+              <a class="text-white bg-lime-700 border-teal-900 border-2 rounded-lg px-2 py-1 hover:bg-lime-700" href="/login">Entra a tu cuenta🐱</a>
+              <a class="text-white bg-lime-700 border-teal-900 border-2 rounded-lg px-2 py-1 hover:bg-lime-700" href="/signup">Date de alta🐶</a>
             {{/if}}
-          </ul>
+          </div>
         </div>
       </div>
     </nav>
   </header>
-  <div class="container">
+  <div class="container mx-auto px-4">
     {{{body}}}
   </div>
   <script src="/js/deletePost.js"></script>
