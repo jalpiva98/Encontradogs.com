@@ -1,15 +1,18 @@
 <main class="container mt-5">
   <article>
-    <h1 class="text-dark">{{title}}</h1>
-    <p>By {{User.username}} on {{format_date createdAt}}</p>
-    <img src={{imageUrl}} alt="pet_picture" style="width: 300px; height: 300px;">
-    <p class="text-dark">{{content}}</p>
-    <p>Category: {{category}}</p>
-    <p>Size: {{size}}</p>
-    <p>Color: {{color}}</p>
-    <p>Breed: {{breed}}</p>
-    <p>Location: {{location}}</p>
-    <p>Time: {{time}}</p>
+    <h1 class="block mx-auto mb-4 h-10 bg-teal-900 rounded-md text-white py-2 text-center">{{title}}</h1>
+    <div class="relative">
+      <img src={{imageUrl}} alt="pet_picture" class="w-full h-auto">
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-2xl font-semibold text-gray-800">{{title}}</h2>
+      <p class="text-sm text-gray-600">{{breed}} | {{location}} | {{category}} | {{size}} | {{color}}</p>
+      <hr class="my-4 border-t-2 border-gray-300">
+      <h3 class="text-xl text-gray-800">About</h3>
+      <p class="text-gray-700">{{content}}</p>
+      <p class="text-gray-600">Last seen on {{location}} at {{time}}</p>
+      <p class="text-right text-sm">By {{User.username}} on {{format_date createdAt}}</p>
+    </div>
   </article>
   {{#if logged_in}}
     <form class="new-hearthstone-comment-form mb-3">
