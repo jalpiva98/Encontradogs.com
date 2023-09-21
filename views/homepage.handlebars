@@ -24,7 +24,7 @@
 <section class="flex flex-wrap">
 <!-- Left: Login Form -->
 <section class="w-full md:w-1/2 p-4 h-3/4">
-  <h1 class="w-1/2 px-4 py-2 mb-2 bg-teal-900 text-white rounded-md shadow-[3px_3px_0px_3px_#73ac31,10px_10px_0px_3px_#bdff73]">Ingresa con tu usuario</h1>
+  <h1 class="w-1/2 px-4 py-2 mb-2 bg-teal-900 text-white font-bold rounded-md shadow-[3px_3px_0px_3px_#73ac31,10px_10px_0px_3px_#bdff73]">INGRESA CON TU USUARIO</h1>
   <form class="hearthstone-login-form mt-10 h-[35vh] hearthstone-signup-form bg-emerald-300 text-teal-900 rounded-lg border-teal-900 border-2 flex flex-col justify-between">
     <div>
       <div class="mb-3 flex flex-col items-center"> <!-- Center inputs vertically and horizontally -->
@@ -55,11 +55,11 @@
 
       <!-- Right: Signup Form -->
 <section class="w-full md:w-1/2 p-4 h-3/4">
-  <h1 class="w-1/2 px-4 py-2 mb-2 bg-teal-900 text-white rounded-md shadow-[3px_3px_0px_3px_#73ac31,10px_10px_0px_3px_#bdff73]">Únete a la comunidad</h1>
+  <h1 class="w-1/2 px-4 py-2 mb-2 bg-teal-900 text-white font-bold rounded-md shadow-[3px_3px_0px_3px_#73ac31,10px_10px_0px_3px_#bdff73]">ÚNETE A LA COMUNIDAD</h1>
   <form id="signup-form" class="h-[35vh] mt-10 hearthstone-signup-form bg-emerald-300 text-teal-900 rounded-lg border-teal-900 border-2 flex flex-col justify-between"> <!-- Add flex and justify-between here -->
     <div>
       <div class="mb-3 flex flex-col items-center"> <!-- Center inputs vertically and horizontally -->
-        <label for="username" class="block text-white">Nombre de Usuario</label>
+        <label for="username" class="block text-white font-bold">NOMBRE DE USUARIO</label>
         <input
           type="text"
           class="w-5/6 px-3 py-2 border-teal-900 border-2 rounded-md focus:outline-none focus:border-yellow-500"
@@ -68,7 +68,7 @@
         />
       </div>
       <div class="mb-3 flex flex-col items-center"> <!-- Center inputs vertically and horizontally -->
-        <label for="email" class="block text-white">Correo electrónico</label>
+        <label for="email" class="block text-white font-bold">CORREO ELECTRÓNICO</label>
         <input
           type="email"
           class="w-5/6 px-3 py-2 border-teal-900 border-2 rounded-md focus:outline-none focus:border-yellow-500"
@@ -77,7 +77,7 @@
         />
       </div>
       <div class="mb-3 flex flex-col items-center"> <!-- Center inputs vertically and horizontally -->
-        <label for="password" class="block text-white">Crea una contraseña</label>
+        <label for="password" class="block text-white font-bold">CREA UNA CONTRASEÑA</label>
         <input
           type="password"
           class="w-5/6 px-3 py-2 border-teal-900 border-2 rounded-md focus:outline-none focus:border-yellow-500"
@@ -122,46 +122,27 @@
   <h1 class="block mx-auto mb-4 h-10 bg-teal-900 rounded-md text-white py-2">¡Mascotas Encontradas por la Comunidad!</h1>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     {{#each posts}}
-      <div class="w-full p-4 shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)]">
-        {{#if imageUrl}}
-          <img src="{{imageUrl}}" alt="Imagen de animal encontrado" class="petCard-img">
-        {{else}}
-          <img src="/Assets/img/DogPlaceholder.svg" alt="Imagen de animal encontrado" class="petCard-img">
-        {{/if}}
-        <div class="shadow-md rounded-md p-4">
-          <h2 class="text-lg font-semibold mb-2">
-            <a href="/post/{{id}}" class="text-gray-900">{{title}}</a>
-          </h2>
-          <p class="text-gray-600">By {{User.username}} on {{format_date createdAt}}</p>
-        </div>
-      </div>
+<div class="w-full p-4 shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)]">
+  {{#if imageUrl}}
+    <div class="flex justify-center items-center"> <!-- Added this div with flex styles -->
+      <img src="{{imageUrl}}" alt="Imagen de animal encontrado" class="max-w-full min-h-80 max-h-80">
+    </div>
+  {{else}}
+    <div class="flex justify-center items-center"> <!-- Added this div with flex styles -->
+      <img src="/Assets/img/DogPlaceholder.svg" alt="Imagen de animal encontrado" class="petCard-img">
+    </div>
+  {{/if}}
+  <div class="shadow-md rounded-md p-4">
+    <h2 class="text-lg font-semibold mb-2">
+      <a href="/post/{{id}}" class="text-gray-900">{{title}}</a>
+    </h2>
+    <p class="text-gray-600">By {{User.username}} on {{format_date createdAt}}</p>
+  </div>
+</div>
     {{/each}}
 
 
   {{map}}
   </div>
 </section>
-
-<!-- MAP Section Below -->
-<section class="relative min-h-[25vh] py-16 bg-teal-900  mb-20 ">
-    <div class="w-full text-center">
-      <p class="text-white text-2xl font-bold">This is the map placeholder</p>
-      <!-- Add content or components here -->
-    </div>
-      <!-- Search Bar Section Below -->
-<div class="absolute bottom-0 left-0 ml-10">
-  <div class="flex mb-10">
-    <input
-      type="text"
-      placeholder="¡Busca una ubicación!"
-      class="w-64 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:border-yellow-500"
-    />
-    <button type="button" class="px-4 py-2 mx-auto bg-emerald-300 text-white rounded-r-md focus:border-yellow-500">
-      Buscar
-    </button>
-  </div>
-</div>
-    
-</section>
-
 </main>

@@ -1,3 +1,11 @@
+
+.leaflet-container {
+  height: 45vh;
+  width: 90vh;
+  max-width: 75%;
+  max-height: 50%;
+}
+
 .post-container {
     transition: background-color 0.3s;
   }
