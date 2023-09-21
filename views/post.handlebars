@@ -1,8 +1,8 @@
 <main class="container mt-5">
   <article>
     <h1 class="block mx-auto mb-4 h-10 bg-teal-900 rounded-md text-white py-2 text-center">{{title}}</h1>
-    <div class="relative">
-      <img src={{imageUrl}} alt="pet_picture" class="w-full h-auto">
+    <div class="h-[50vh] flex items-center justify-center bg-black">
+      <img src="{{imageUrl}}" alt="pet_picture" class="max-h-full w-auto">
     </div>
     <div class="bg-white rounded-lg shadow-md p-6">
       <h2 class="text-2xl font-semibold text-gray-800">{{title}}</h2>
@@ -15,12 +15,12 @@
     </div>
   </article>
   {{#if logged_in}}
-    <form class="new-hearthstone-comment-form mb-3">
+    <form class="new-pet-comment-form mb-3 mt-3">
       <div class="mb-3">
         <label for="comment" class="form-label text-dark">Agrega un comentario</label>
         <textarea
           class="form-control"
-          id="content-new-hearthstone-comment"
+          id="content-new-pet-comment"
           rows="3"
           placeholder="Add a comment"
         ></textarea>
@@ -28,11 +28,16 @@
       <button type="submit" class="btn btn-warning">Enviar</button>
     </form>
   {{/if}}
-  <h2>Comments</h2>
-  {{#each Comments}}
-    <div class="comment mb-3">
-      <p class="text-dark">{{comment_text}}</p>
-      <p>By {{User.username}} on {{format_date createdAt}}</p>
-    </div>
-  {{/each}}
+
+<h2 class="text-2xl font-semibold mb-4">Comments</h2>
+
+{{#each Comments}}
+  <div class="comment mb-6 bg-white rounded-lg p-4 shadow-md relative">
+    <p class="text-gray-800 text-lg">{{comment_text}}</p>
+    <p class="text-gray-600 text-sm">By {{User.username}} on {{format_date createdAt}}</p>
+    
+    <!-- Delete Comment Button -->
+    <button class="absolute top-2 right-2 text-red-500 hover:text-red-700" onclick="deleteComment('{{_id}}')">Delete</button>
+  </div>
+{{/each}}
 </main>

@@ -8,14 +8,14 @@ const handlePostAction = async (actionType) => {
     const method = actionType === 'update' ? 'PUT' : 'DELETE';
 
     if (actionType === 'update') {
-      const title = document.querySelector('#title-update-hearthstone-post').value.trim();
-      const content = document.querySelector('#content-update-hearthstone-post').value.trim();
-      const category = document.querySelector('#category-update-hearthstone-post').value.trim();
-      const size = document.querySelector('#size-update-hearthstone-post').value.trim();
-      const color = document.querySelector('#color-update-hearthstone-post').value.trim();
-      const breed = document.querySelector('#breed-update-hearthstone-post').value.trim();
-      const location = document.querySelector('#location-update-hearthstone-post').value.trim();
-      const time = document.querySelector('#time-update-hearthstone-post').value.trim();
+      const title = document.querySelector('#title-update-pet-post').value.trim();
+      const content = document.querySelector('#content-update-pet-post').value.trim();
+      const category = document.querySelector('#category-update-pet-post').value.trim();
+      const size = document.querySelector('#size-update-pet-post').value.trim();
+      const color = document.querySelector('#color-update-pet-post').value.trim();
+      const breed = document.querySelector('#breed-update-pet-post').value.trim();
+      const location = document.querySelector('#location-update-pet-post').value.trim();
+      const time = document.querySelector('#time-update-pet-post').value.trim();
 
       if (!title || !content) {
         return; // don't perform the action if title or content is missing
@@ -59,7 +59,7 @@ const handlePostAction = async (actionType) => {
 };
 
 // Event listener for both update and delete buttons
-const actionButtons = document.querySelectorAll('.action-hearthstone-post');
+const actionButtons = document.querySelectorAll('.action-pet-post');
 
 actionButtons.forEach((button) => {
   button.addEventListener('click', (event) => {
