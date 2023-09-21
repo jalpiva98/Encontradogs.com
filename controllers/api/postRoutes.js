@@ -3,6 +3,7 @@ const { Post, User, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 const cloudinary = require("../../utils/cloudinary");
 const upload = require("../../middleware/multer");
+const sequelize = require("../../config/connection"); // Adjust the path as needed
 const { Op } = require("sequelize");
 
 // Function to handle error responses
@@ -25,7 +26,7 @@ router.get("/", async (req, res) => {
 });
 
 // Get a specific post by ID with associated user and comments
-router.get("/:id", async (req, res) => {
+router.get("/posts/:id", async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
@@ -62,7 +63,7 @@ router.post("/", withAuth, async (req, res) => {
 });
 
 // Update an existing post by ID (requires authentication)
-router.put("/:id", withAuth, async (req, res) => {
+router.put("/posts/:id", withAuth, async (req, res) => {
   try {
     const updatedPost = await Post.update(
       {
@@ -85,7 +86,7 @@ router.put("/:id", withAuth, async (req, res) => {
 });
 
 // Delete a post by ID (requires authentication)
-router.delete("/:id", withAuth, async (req, res) => {
+router.delete("/posts/:id", withAuth, async (req, res) => {
   try {
     await Comment.destroy({
       where: { post_id: req.params.id },
@@ -106,57 +107,35 @@ router.delete("/:id", withAuth, async (req, res) => {
   }
 });
 
-console.log('HOLAAAAAAAA 22222222')
+
 router.get('/searchs', async (req, res) => {
-  console.log('HOLAAAAAAAA');
   try {
-    const {search} = req.query; 
+    const { search } = req.query;
     let postData;
-    console.log(search)
-    if (searchInput) {
+    console.log(search);
+    if (search) {
+      // If a search query is provided, perform the search
       const query = 'SELECT * FROM post WHERE LOWER(`title`) LIKE $1';
       postData = await sequelize.query(query, {
-        bind: [`%${search}%`], 
+        bind: [`%${search}%`],
         type: sequelize.QueryTypes.SELECT,
         model: Post,
         mapToModel: true
       });
     } else {
       console.log('HOLAAAAAAAAAAA');
+      // If no search query is provided, fetch all posts
       postData = await Post.findAll({
         include: [{ model: User, attributes: ['username'] }],
       });
     }
     res.status(200).json(postData);
   } catch (err) {
-    console.error("Post not found", err);
-    res.status(500);
+    console.error("Error:", err);
+    res.status(500).json({ error: "An error occurred" });
   }
 });
-console.log('HOLAAAAAAAA 333333333')
-// Get a specific post by ID with associated user and comments
-router.get("/:id", async (req, res) => {
-  console.log('HOLAAAAAAAA 44444444');
-  try {
-    const postData = await Post.findByPk(req.params.search, {
-      include: [
-        { model: User, attributes: ["username"] },
-        {
-          model: Comment,
-          include: [{ model: User, attributes: ["username"] }],
-        },
-      ],
-    });
-    if (!postData) {
-      res.status(404).json({ message: "No post found with that id!" });
-      return;
-    }
-    res.status(200).json(postData);
-  } catch (err) {
-    // Handle errors and send a 500 Internal Server Error response
-    handleErrorResponse(res, err);
-  }
-});
+
 
 // Handle image upload to Cloudinary
 router.post("/upload", upload.single("file"), async (req, res) => {

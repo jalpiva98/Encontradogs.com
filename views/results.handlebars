@@ -1,0 +1,31 @@
+<main class="container mx-auto mt-5">
+  <br>
+  <h1 class="block mx-auto mb-4 h-10 bg-teal-900 rounded-md text-white font-bold py-2 text-center">RESULTADOS</h1>
+  <div class="grid mb-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    {{#each posts}}
+      <div class="w-full p-4 shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)]">
+        <h2 class="text-xl font-semibold text-center text-dark"><a href="/post/{{this.id}}">{{this.title}}</a></h2>
+        <a href="/post/{{this.id}}">
+  {{#if imageUrl}}
+    <div class="flex justify-center items-center"> <!-- Added this div with flex styles -->
+      <img src="{{imageUrl}}" alt="Imagen de animal encontrado" class="max-w-full min-h-80 max-h-[25vh]">
+    </div>
+  {{else}}
+    <div class="flex justify-center items-center w-48 h-48 object-contain"> <!-- Added this div with flex styles -->
+      <img src="/Assets/img/DogPlaceholder.svg" alt="Imagen de animal encontrado" class="petCard-img max-w-full max-h-[25vh] w-40 h-60 object-contain">
+    </div>
+  {{/if}}
+        <p class="mt-4 text-dark">{{this.content}}</p>
+        <p class="mt-2 text-sm">By {{this.User.username}} on {{format_date this.createdAt}}</p>
+        <div class="text-center mt-4">
+          <a href="/editpost/{{this.id}}" class="mx-auto px-4 py-2 bg-lime-700 text-white font-bold rounded-md focus:border-yellow-500">
+            Edit
+          </a>
+          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block ml-2 delete-post" data-post-id="{{this.id}}">
+            Delete
+          </button>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</main>
