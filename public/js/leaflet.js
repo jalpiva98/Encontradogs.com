@@ -53,7 +53,7 @@ function getApi() {
       })
       .then(function (data) {
 
-        for (let i = 0; i < 300; i++) {
+        for (let i = 0; i < data.length; i++) {
             const title = data[i].title;
             const location = data[i].location.split(",");
             const lat = location[0];
