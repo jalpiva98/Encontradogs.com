@@ -126,13 +126,13 @@ router.get("/editpost/:id", async (req, res) => {
 router.get('/results', async (req, res) => {
   try {
     const { search } = req.query;
-
     // Perform the same search query as in the /searchs route
     const query = 'SELECT * FROM post WHERE LOWER(`title`) LIKE $1';
 
     const postData = await sequelize.query(query, {
       bind: [`%${search}%`],
       type: sequelize.QueryTypes.SELECT,
+      include: [{ model: User, attributes: ["username"] }],
     });
     // Manually convert the raw database rows into objects
     const posts = postData.map((row) => ({
@@ -145,10 +145,12 @@ router.get('/results', async (req, res) => {
       breed: row.breed,
       location: row.location,
       time: row.time,
-      imageUrl: row.imageUrl,
+      imageUrl: row.image_url,
       user_id: row.user_id,
       createdAt: row.createdAt,
       updatedAt: row.updatedAt,
+      username: row.User ? row.User.username: null,
+
     }));
     console.log('IMGGGGGGGGGGG');
     console.log('postData:', postData);
