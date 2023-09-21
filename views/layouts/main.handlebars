@@ -4,13 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Encontradogs</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/dashboard.css" />
-
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/dashboard.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
 
  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
@@ -20,20 +17,11 @@
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
 	<style>
-		html, body {
-			height: 100%;
-			margin: 0;
-		}
-		.leaflet-container {
-			height: 500px;
-			width: 1920px;
-			max-width: 100%;
-			max-height: 100%;
-		}
+
 	</style>
 
 </head>
-<body class="text-primary">
+<body class="text-primary justify-center">
   <header>
     <nav class="bg-emerald-300 shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)]">
       <div class="container mx-auto px-4">
@@ -54,7 +42,9 @@
             <a class="text-white bg-lime-700 border-teal-900 border-2 rounded-lg px-2 py-1 hover:bg-lime-700" href="/">Home🐕🏠</a>
             <a class="text-white bg-lime-700 border-teal-900 border-2 rounded-lg px-2 py-1 hover:bg-lime-700" href="/dashboard">Tus Publicaciones🦝</a>
             {{#if logged_in}}
-              <a class="text-white" href="#" id="pet-logout">Salir🐰</a>
+
+              <a class="text-white bg-lime-700 border-teal-900 border-2 rounded-lg px-2 py-1 hover:bg-lime-700" href="#" id="hearthstone-logout">Salir🐰</a>
+
             {{else}}
               <a class="text-white bg-lime-700 border-teal-900 border-2 rounded-lg px-2 py-1 hover:bg-lime-700" href="/login">Entra a tu cuenta🐱</a>
               <a class="text-white bg-lime-700 border-teal-900 border-2 rounded-lg px-2 py-1 hover:bg-lime-700" href="/signup">Date de alta🐶</a>
@@ -68,8 +58,10 @@
     {{{body}}}
   </div>
 <!-- Map Section Below -->
-<div id="map" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
-     style="position: relative; outline-style: none;" tabindex="0">
+<section class="relative mx-auto max-h-[100vh] py-16 bg-teal-900 mb-20 flex flex-col items-center justify-center">
+
+  <div id="map" class="leaflet-container mx-auto leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom max-h-[50vh] max-w-[100vh]" style="position: relative; outline-style: none;" tabindex="0">
+     
     <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);">
         <div class="leaflet-pane leaflet-tile-pane">
             <div class="leaflet-layer" style="z-index: 1; opacity: 1;"></div>
@@ -105,7 +97,24 @@
             </div>
         </div>
     </div>
+
 </div>
+<!-- Search Bar Section-->
+  <div class="ml-10 mt-5">
+    <div class="flex mb-10">
+      <input
+        type="text"
+        placeholder="¡Busca una ubicación!"
+        class="w-64 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:border-yellow-500"
+      />
+      <button type="button" class="mx-auto px-4 py-2 bg-lime-700 text-white rounded-r-md focus:border-yellow-500">
+        Buscar
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer>
 
   <script src="/js/searchTag.js"></script>
   <script src="/js/deletePost.js"></script>
