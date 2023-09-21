@@ -1,10 +1,10 @@
 //this is for new comments on the page
-const newHearthstoneCommentFormHandler = async (event) => {
+const newPetCommentFormHandler = async (event) => {
     event.preventDefault();
  
     const post_id = parseInt(window.location.pathname.split('/').pop());
 
-    const content = document.querySelector('#content-new-hearthstone-comment').value.trim();
+    const content = document.querySelector('#content-new-pet-comment').value.trim();
   
     if (content) {
       try {
@@ -28,8 +28,8 @@ const newHearthstoneCommentFormHandler = async (event) => {
     }
   };
   
-  const newHearthstoneCommentForm = document.querySelector('.new-hearthstone-comment-form');
-  if (newHearthstoneCommentForm) {
-    newHearthstoneCommentForm.addEventListener('submit', newHearthstoneCommentFormHandler);
+  const newPetCommentForm = document.querySelector('.new-pet-comment-form');
+  if (newPetCommentForm) {
+    newPetCommentForm.addEventListener('submit', newPetCommentFormHandler);
   }
   

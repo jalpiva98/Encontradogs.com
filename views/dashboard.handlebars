@@ -11,10 +11,12 @@
         <p class="mt-4 text-dark">{{content}}</p>
         <p class="mt-2 text-sm">By {{User.username}} on {{format_date createdAt}}</p>
         <div class="text-center mt-4">
-          <a href="/editpost/{{id}}" class="mx-auto px-4 py-2 bg-lime-700 text-white font-bold rounded-md focus:border-yellow-500">
+
+          <a href="/editpost/{{id}}" class="bg-lime-700 mr-2 hover:bg-lime-800 text-white px-4 py-2 rounded">
             Edit
           </a>
-          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block ml-2 delete-post" data-post-id="{{id}}">
+          <button class="bg-red-700 ml-2 hover:bg-red-800 text-white px-4 py-2 rounded delete-post" data-post-id="{{id}}">
+
             Delete
           </button>
         </div>
@@ -23,7 +25,9 @@
   </div>
   <div class="mb-3 text-center">
     <h2 class="mb-4 mt-3 text-dark text-3xl text-center">Haz tu nuevo reporte</h2>
-    <a href="/newpost" class="mx-auto px-4 py-2 bg-lime-700 text-white rounded-md focus:border-yellow-500">
+
+    <a href="/newpost" class="bg-lime-700 hover:bg-lime-800 text-white px-4 py-2 rounded">
+
       Agrega una mascota
     </a>
   </div>

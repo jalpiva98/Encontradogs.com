@@ -1,5 +1,5 @@
 // this handles the logout
-const hearthstoneLogout = async () => {
+const petLogout = async () => {
     try {
       const response = await fetch('/api/users/logout', {
         method: 'POST',
@@ -17,8 +17,8 @@ const hearthstoneLogout = async () => {
     }
   };
   
-  const hearthstoneLogoutButton = document.querySelector('#hearthstone-logout');
-  if (hearthstoneLogoutButton) {
-    hearthstoneLogoutButton.addEventListener('click', hearthstoneLogout);
+  const petLogoutButton = document.querySelector('#pet-logout');
+  if (petLogoutButton) {
+    petLogoutButton.addEventListener('click', petLogout);
   }
   
