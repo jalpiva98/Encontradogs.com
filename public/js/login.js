@@ -1,10 +1,10 @@
-// this is a function to handle Hearthstone blog login
+// this is a function to handle pet blog login
 
-const hearthstoneLoginHandler = async (event) => {
+const petLoginHandler = async (event) => {
     event.preventDefault();
   
-    const usernameInput = document.querySelector('#username-hearthstone-login');
-    const passwordInput = document.querySelector('#password-hearthstone-login');
+    const usernameInput = document.querySelector('#username-pet-login');
+    const passwordInput = document.querySelector('#password-pet-login');
     
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
@@ -31,8 +31,8 @@ const hearthstoneLoginHandler = async (event) => {
     }
   };
   
-  const hearthstoneLoginForm = document.querySelector('.hearthstone-login-form');
-  if (hearthstoneLoginForm) {
-    hearthstoneLoginForm.addEventListener('submit', hearthstoneLoginHandler);
+  const petLoginForm = document.querySelector('.pet-login-form');
+  if (petLoginForm) {
+    petLoginForm.addEventListener('submit', petLoginHandler);
   }
   

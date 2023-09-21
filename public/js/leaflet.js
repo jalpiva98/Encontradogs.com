@@ -17,25 +17,49 @@ const LeafIcon = L.Icon.extend({
     }
 });
 
-const dogIcon = new LeafIcon({iconUrl: 'https://www.pngkit.com/png/detail/950-9507730_635px-circle-dog-catches-something.png'});
 
-for (let i = 0; i < 300; i++) {
-//console.log(dogIcon);
-const mGreen = L.marker([20.59552859795402+Math.sin(i) * -i, -100.424802006007859+i], {icon: dogIcon}).bindPopup('I am a green leaf.').addTo(map);
-} 
+
+
 const popup = L.popup();
 function onMapClick(e) {
+
 const coordinates  = e.latlng.toString();
 locationText.value= coordinates.slice(7,25);
 console.log(locationText);  
 popup
     .setLatLng(e.latlng)
     .setContent("You clicked the map at " + e.latlng.toString())
-    .openOn(map);
-
-  
+    .openOn(map); 
 }
 
 map.on('click', onMapClick);
 
-leaflet.exports = {coordinates};
+
+getApi();
+
+
+
+function drawMap(title,lat,long,img){
+    const dogIcon = new LeafIcon({iconUrl: img});
+    const mGreen = L.marker([lat , long], {icon: dogIcon}).bindPopup(title).addTo(map);
+}
+
+function getApi() {
+    var requestUrl = '/dogsData';
+  
+    fetch(requestUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+
+        for (let i = 0; i < data.length; i++) {
+            const title = data[i].title;
+            const location = data[i].location.split(",");
+            const lat = location[0];
+            const long = location[1];
+            const img = data[i].imageUrl;
+            drawMap(title,lat,long,img);
+        }
+      });
+  }

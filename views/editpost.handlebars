@@ -1,22 +1,22 @@
 <main class="container mt-5">
   <h1 class="mb-4 text-dark">Edita tus publicaciones</h1>
-  <form class="update-hearthstone-post-form mb-3">
+  <form class="update-pet-post-form mb-3">
     <!-- campos que ya existen -->
     <div class="mb-3">
-      <label for="title-update-hearthstone-post" class="form-label">Title</label>
+      <label for="title-update-pet-post" class="form-label">Title</label>
       <input
         type="text"
         class="form-control"
-        id="title-update-hearthstone-post"
+        id="title-update-pet-post"
         placeholder="Enter post title"
         value="{{title}}"
       />
     </div>
     <div class="mb-3">
-      <label for="content-update-hearthstone-post" class="form-label">Content</label>
+      <label for="content-update-pet-post" class="form-label">Content</label>
       <textarea
         class="form-control"
-        id="content-update-hearthstone-post"
+        id="content-update-pet-post"
         rows="3"
         placeholder="Enter post content"
       >{{content}}</textarea>
@@ -24,67 +24,67 @@
 
     <!-- nuevos camposs -->
     <div class="mb-3">
-      <label for="category-update-hearthstone-post" class="form-label">Category</label>
+      <label for="category-update-pet-post" class="form-label">Category</label>
       <input
         type="text"
         class="form-control"
-        id="category-update-hearthstone-post"
+        id="category-update-pet-post"
         placeholder="Enter category"
         value="{{category}}"
       />
     </div>
     <div class="mb-3">
-      <label for="size-update-hearthstone-post" class="form-label">Size</label>
+      <label for="size-update-pet-post" class="form-label">Size</label>
       <input
         type="text"
         class="form-control"
-        id="size-update-hearthstone-post"
+        id="size-update-pet-post"
         placeholder="Enter size"
         value="{{size}}"
       />
     </div>
     <div class="mb-3">
-      <label for="color-update-hearthstone-post" class="form-label">Color</label>
+      <label for="color-update-pet-post" class="form-label">Color</label>
       <input
         type="text"
         class="form-control"
-        id="color-update-hearthstone-post"
+        id="color-update-pet-post"
         placeholder="Enter color"
         value="{{color}}"
       />
     </div>
     <div class="mb-3">
-      <label for="breed-update-hearthstone-post" class="form-label">Breed</label>
+      <label for="breed-update-pet-post" class="form-label">Breed</label>
       <input
         type="text"
         class="form-control"
-        id="breed-update-hearthstone-post"
+        id="breed-update-pet-post"
         placeholder="Enter breed"
         value="{{breed}}"
       />
     </div>
     <div class="mb-3">
-      <label for="location-update-hearthstone-post" class="form-label">Location</label>
+      <label for="location-update-pet-post" class="form-label">Location</label>
       <input
         type="text"
         class="form-control"
-        id="location-update-hearthstone-post"
+        id="location-update-pet-post"
         placeholder="Enter location"
         value="{{location}}"
       />
     </div>
     <div class="mb-3">
-      <label for="time-update-hearthstone-post" class="form-label">Time</label>
+      <label for="time-update-pet-post" class="form-label">Time</label>
       <input
         type="text"
         class="form-control"
-        id="time-update-hearthstone-post"
+        id="time-update-pet-post"
         placeholder="Enter time"
         value="{{time}}"
       />
     </div>
 
-    <button type="button" data-action="update" id="update-hearthstone-post" class="btn btn-info action-hearthstone-post">Edita tu publicación</button>
-    <button type="button" id="delete-hearthstone-post" class="btn btn-danger delete-post" data-post-id="{{id}}">Elimina tu publicación</button>
+    <button type="button" data-action="update" id="update-pet-post" class="action-pet-post bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded">Edita tu publicación</button>
+    <button type="button" id="delete-pet-post" class="bg-red-700 hover:bg-red-800 text-white px-4 py-2 rounded delete-post" data-post-id="{{id}}">Elimina tu publicación</button>
   </form>
 </main>
