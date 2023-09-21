@@ -121,5 +121,14 @@ router.get("/editpost/:id", async (req, res) => {
 });
 
 
+router.get('/dogsData', (req,res) => {
+  console.log('data');
+  Post.findAll().then((dogData) => {
+    res.json(dogData);
+
+
+  });
+})
+
 // module exports router
 module.exports = router;

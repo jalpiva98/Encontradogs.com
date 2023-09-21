@@ -9,7 +9,7 @@ const postData = [
     size: 'Medium',
     color: 'Brown',
     breed: 'Mixed',
-    location: 'Insurgentes Sur',
+    location: '20.632302, -100.473404',
     time: 'Morning',
     imageUrl:'https://estaticos-cdn.prensaiberica.es/clip/823f515c-8143-4044-8f13-85ea1ef58f3a_16-9-discover-aspect-ratio_default_0.jpg'
   },
@@ -21,9 +21,9 @@ const postData = [
     size: 'Large',
     color: 'Black',
     breed: 'Persian',
-    location: 'Colonia del Valle',
+    location: '20.64676, -100.359421',
     time: 'Afternoon',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Stray_calico_cat_near_Sagami_River-01.jpg'
+    imageUrl: 'https://res.cloudinary.com/dddkhzegf/image/upload/v1695257600/Pets/rfvjejpebpqazgy8tnzu.jpg'
   },
   {
     title: 'Pajarito Caído en Polanco',
@@ -33,7 +33,7 @@ const postData = [
     size: 'Small',
     color: 'Gray',
     breed: 'Sparrow',
-    location: 'Polanco',
+    location: '20.670372, -100.451946',
     time: 'Evening',
     imageUrl: 'https://endanea.com/wp-content/uploads/2015/10/endanea-mascotas-pajaro-caido-nido.jpg'
   },
