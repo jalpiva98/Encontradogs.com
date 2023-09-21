@@ -1,5 +1,5 @@
 // sign uppp
-const hearthstoneSignupFormHandler = async (event) => {
+const petSignupFormHandler = async (event) => {
     event.preventDefault();
   
     const username = document.querySelector('#username').value.trim();
@@ -29,8 +29,8 @@ const hearthstoneSignupFormHandler = async (event) => {
     }
   };
   
-  const hearthstoneSignupForm = document.querySelector('#signup-form');
-  if (hearthstoneSignupForm) {
-    hearthstoneSignupForm.addEventListener('submit', hearthstoneSignupFormHandler);
+  const petSignupForm = document.querySelector('#signup-form');
+  if (petSignupForm) {
+    petSignupForm.addEventListener('submit', petSignupFormHandler);
   }
   
