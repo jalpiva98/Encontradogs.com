@@ -3,6 +3,8 @@ const router = require("express").Router();
 const { Post, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 const cowsay = require("cowsay");
+const sequelize = require("../config/connection");
+
 
 // this is the route to get the homepage
 router.get("/", async (req, res) => {
@@ -121,6 +123,47 @@ router.get("/editpost/:id", async (req, res) => {
   }
 });
 
+router.get('/results', async (req, res) => {
+  try {
+    const { search } = req.query;
+    // Perform the same search query as in the /searchs route
+    const query = 'SELECT * FROM post WHERE LOWER(`title`) LIKE $1';
+
+    const postData = await sequelize.query(query, {
+      bind: [`%${search}%`],
+      type: sequelize.QueryTypes.SELECT,
+      include: [{ model: User, attributes: ["username"] }],
+    });
+    // Manually convert the raw database rows into objects
+    const posts = postData.map((row) => ({
+      id: row.id,
+      title: row.title,
+      content: row.content,
+      category: row.category,
+      size: row.size,
+      color: row.color,
+      breed: row.breed,
+      location: row.location,
+      time: row.time,
+      imageUrl: row.image_url,
+      user_id: row.user_id,
+      createdAt: row.createdAt,
+      updatedAt: row.updatedAt,
+      username: row.User ? row.User.username: null,
+
+    }));
+    console.log('IMGGGGGGGGGGG');
+    console.log('postData:', postData);
+    // Render the results page with the matching posts
+    res.render('results', {
+      posts,
+      searchQuery: search,
+    });
+  } catch (err) {
+    console.error("Error:", err);
+    res.status(500).json({ error: "An error occurred 102" });
+  }
+});
 
 router.get('/dogsData', (req,res) => {
   console.log('data');

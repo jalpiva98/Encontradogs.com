@@ -117,7 +117,7 @@
 </section>
 
 
-  {{/if}}
+{{/if}}
   <div class="flex items-center mb-0"> <!-- Create blank space -->
             <div class="w-full h-13 bg-transparent"></div>
   </div>
@@ -125,11 +125,11 @@
 <section class="text-center mx-auto mb-20">
   <h1 class="block mx-auto mb-4 h-10 bg-teal-900 rounded-md text-white py-2">¡Mascotas Encontradas por la Comunidad!</h1>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    {{#each posts}}
-<div class="w-full p-4 shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)]">
+ {{#each posts}}
+<div class="w-full p-4  shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)]">
   {{#if imageUrl}}
     <div class="flex justify-center items-center"> <!-- Added this div with flex styles -->
-      <img src="{{imageUrl}}" alt="Imagen de animal encontrado" class="max-w-full min-h-80 max-h-80">
+      <img src="{{imageUrl}}" alt="Imagen de animal encontrado" class="max-w-full min-h-80 max-h-[25vh]">
     </div>
   {{else}}
     <div class="flex justify-center items-center"> <!-- Added this div with flex styles -->
