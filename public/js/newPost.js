@@ -23,7 +23,7 @@ const newPetPostFormHandler = async (event) => {
       const formData = new FormData();
       formData.append('file', imageFile);
 
-      const imageResponse = await fetch('/api/posts/posts/upload', {
+      const imageResponse = await fetch('/api/posts/upload', {
         method: 'POST',
         body: formData,
       });
