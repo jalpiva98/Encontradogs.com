@@ -1,7 +1,14 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Post extends Model {}
+class Post extends Model {
+  static associate(models) {
+    // Define the association between Post and User models
+    Post.belongsTo(models.User, {
+      foreignKey: 'user_id', // This should match the field name in the User model
+    });
+  }
+}
 
 Post.init(
   {
@@ -10,6 +17,10 @@ Post.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+      references: {
+        model: 'User', // Make sure it references the User model
+        key: 'id',
+      },
     },
     title: {
       type: DataTypes.STRING,

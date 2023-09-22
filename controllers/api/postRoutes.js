@@ -3,6 +3,8 @@ const { Post, User, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 const cloudinary = require("../../utils/cloudinary");
 const upload = require("../../middleware/multer");
+const sequelize = require("../../config/connection"); // Adjust the path as needed
+const { Op } = require("sequelize");
 
 // Function to handle error responses
 const handleErrorResponse = (res, err) => {
@@ -24,7 +26,7 @@ router.get("/", async (req, res) => {
 });
 
 // Get a specific post by ID with associated user and comments
-router.get("/:id", async (req, res) => {
+router.get("/posts/:id", async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
@@ -61,7 +63,7 @@ router.post("/", withAuth, async (req, res) => {
 });
 
 // Update an existing post by ID (requires authentication)
-router.put("/:id", withAuth, async (req, res) => {
+router.put("/posts/:id", withAuth, async (req, res) => {
   try {
     const updatedPost = await Post.update(
       {
@@ -84,7 +86,7 @@ router.put("/:id", withAuth, async (req, res) => {
 });
 
 // Delete a post by ID (requires authentication)
-router.delete("/:id", withAuth, async (req, res) => {
+router.delete("/posts/:id", withAuth, async (req, res) => {
   try {
     await Comment.destroy({
       where: { post_id: req.params.id },
@@ -105,28 +107,35 @@ router.delete("/:id", withAuth, async (req, res) => {
   }
 });
 
-// Search for posts based on matching words in title or content
-router.get("/search", async (req, res) => {
+
+router.get('/searchs', async (req, res) => {
   try {
-    const searchQuery = req.query.q; // Get the search query from the request query parameters
-
-    // Use Sequelize's Op.or to search for posts with matching title or content
-    const matchingPosts = await Post.findAll({
-      where: {
-        [Op.or]: [
-          { title: { [Op.like]: `%${searchQuery}%` } }, // Match words in the title
-          { content: { [Op.like]: `%${searchQuery}%` } }, // Match words in the content
-        ],
-      },
-      include: [{ model: User, attributes: ["username"] }],
-    });
-
-    res.status(200).json(matchingPosts);
+    const { search } = req.query;
+    let postData;
+    console.log(search);
+    if (search) {
+      // If a search query is provided, perform the search
+      const query = 'SELECT * FROM post WHERE LOWER(`title`) LIKE $1';
+      postData = await sequelize.query(query, {
+        bind: [`%${search}%`],
+        type: sequelize.QueryTypes.SELECT,
+        model: Post,
+        mapToModel: true
+      });
+    } else {
+      console.log('HOLAAAAAAAAAAA');
+      // If no search query is provided, fetch all posts
+      postData = await Post.findAll({
+        include: [{ model: User, attributes: ['username'] }],
+      });
+    }
+    res.status(200).json(postData);
   } catch (err) {
-    // Handle errors and send a 500 Internal Server Error response
-    handleErrorResponse(res, err);
+    console.error("Error:", err);
+    res.status(500).json({ error: "An error occurred" });
   }
 });
+
 
 // Handle image upload to Cloudinary
 router.post("/upload", upload.single("file"), async (req, res) => {

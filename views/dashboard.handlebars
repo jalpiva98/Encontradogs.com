@@ -1,4 +1,4 @@
-<main class="container mx-auto mt-5">
+<main class="container mt-5">
   <br>
   <h1 class="block mx-auto mb-4 h-10 bg-teal-900 rounded-md text-white py-2 text-center">Tus Publicaciones</h1>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -11,10 +11,12 @@
         <p class="mt-4 text-dark">{{content}}</p>
         <p class="mt-2 text-sm">By {{User.username}} on {{format_date createdAt}}</p>
         <div class="text-center mt-4">
+
           <a href="/editpost/{{id}}" class="bg-lime-700 mr-2 hover:bg-lime-800 text-white px-4 py-2 rounded">
             Edit
           </a>
           <button class="bg-red-700 ml-2 hover:bg-red-800 text-white px-4 py-2 rounded delete-post" data-post-id="{{id}}">
+
             Delete
           </button>
         </div>
@@ -23,7 +25,9 @@
   </div>
   <div class="mb-3 text-center">
     <h2 class="mb-4 mt-3 text-dark text-3xl text-center">Haz tu nuevo reporte</h2>
+
     <a href="/newpost" class="bg-lime-700 hover:bg-lime-800 text-white px-4 py-2 rounded">
+
       Agrega una mascota
     </a>
   </div>

@@ -4,7 +4,7 @@ const postId = window.location.pathname.split('/').pop();
 // This is a function to handle updates and deletions
 const handlePostAction = async (actionType) => {
   try {
-    const url = `/api/posts/${postId}`;
+    const url = `/api/posts/posts/${postId}`;
     const method = actionType === 'update' ? 'PUT' : 'DELETE';
 
     if (actionType === 'update') {

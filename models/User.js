@@ -7,6 +7,12 @@ class User extends Model {
   checkPassword(loginPassword) {
     return bcrypt.compareSync(loginPassword, this.password);
   }
+  static associate(models) {
+    // Define the association between User and Post models
+    User.hasMany(models.Post, {
+      foreignKey: 'user_id', // This should match the field name in the Post model
+    });
+  }
 }
 
 User.init(
